@@ -9,7 +9,7 @@ color noFill = #5F4444;
 color red = #F55454;
 color blue = #3896C6;
 color spawn = #22B14C;
-color enemy = color(237, 28, 36);
+color enemyz = color(237, 28, 36);
 
 //images
 PImage grass;
@@ -36,8 +36,11 @@ FWorld world;
 FBox p;
 FBox e;
 FBomb bomb = null;
+FEnemy enemy;
 
 ArrayList<FBox> boxes;
+
+ArrayList<FBox> enemies;
 
 void setup() {
   size(1400,1000);
@@ -51,6 +54,8 @@ void setup() {
   createPlayer();
   
   boxes = new ArrayList();
+  
+  enemies = new ArrayList();
   
   grass = loadImage("blockt.png");
   dirt = loadImage("blockt.png");
@@ -77,8 +82,9 @@ void setup() {
       spawnX = x*gridsize;
       spawnY = y*gridsize;
       p.setPosition(spawnX,spawnY);
-    } else if(c == enemy) {
-      createEnemy(x*gridsize, y*gridsize);
+    } else if(c == enemyz) {
+      //createEnemy(x*gridsize, y*gridsize);
+      enemy = new FEnemy(gridsize*x, gridsize*y);
     }
     
     x++;
@@ -94,10 +100,15 @@ void setup() {
 }
 
 void draw() {
-  println(e.getX() + " " + e.getY());
   background(#060524);
   
   movePlayer();
+  
+  for(int i = 0; i < enemies.size();i++) {
+    FBox e = enemies.get(i);
+    float vy = e.getVelocityY();
+    e.setVelocity(60,vy);
+  }
   
   pushMatrix();
   translate(-p.getX()+width/2, -p.getY()+height/2);

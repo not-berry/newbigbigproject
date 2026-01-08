@@ -1,18 +1,31 @@
-void createEnemy(float x, float y) {
-  e = new FBox(gridsize,gridsize);
-  e.setPosition(x,y);
+class FEnemy extends FBox {
   
-  //set visuals
-  e.setFillColor(white);
-  e.setNoStroke();
+  float direction = 1;
   
-  //set physical properties
-  e.setRestitution(0);
-  e.setDensity(10);
-  e.setFriction(0);
-  e.setGrabbable(false);
-  e.setRotatable(false);
+  FEnemy(float x, float y) {
+    super(gridsize, gridsize);
+    this.setPosition(x,y);
   
-  //add to world
-  world.add(e);
+    //set visuals
+    this.setFillColor(white);
+    this.setNoStroke();
+  
+    //set physical properties
+    this.setRestitution(0);
+    this.setDensity(10);
+    this.setFriction(0);
+    this.setGrabbable(false);
+    this.setRotatable(false);
+  
+    //add to world
+    enemies.add(this);
+    world.add(this);
+  }
+  
+  void act() {
+    this.setVelocity(100 * direction,0);
+    //if(this.getX() == this.pgetX()) {
+      
+    //}
+  }
 }
