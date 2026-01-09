@@ -10,6 +10,7 @@ color red = #F55454;
 color blue = #3896C6;
 color spawn = #22B14C;
 color enemyz = color(237, 28, 36);
+color turning = color(127, 127, 127);
 
 //images
 PImage grass;
@@ -41,6 +42,8 @@ FEnemy enemy;
 ArrayList<FBox> boxes;
 
 ArrayList<FBox> enemies;
+
+FloatList t = new FloatList();
 
 void setup() {
   size(1400,1000);
@@ -85,6 +88,8 @@ void setup() {
     } else if(c == enemyz) {
       //createEnemy(x*gridsize, y*gridsize);
       enemy = new FEnemy(gridsize*x, gridsize*y);
+    } else if(c == turning) {
+      t.append(x);
     }
     
     x++;
@@ -106,8 +111,9 @@ void draw() {
   
   for(int i = 0; i < enemies.size();i++) {
     FBox e = enemies.get(i);
-    float vy = e.getVelocityY();
-    e.setVelocity(60,vy);
+    //float vy = e.getVelocityY();
+    //e.setVelocity(60,vy);
+    e.act();
   }
   
   pushMatrix();

@@ -24,8 +24,18 @@ class FEnemy extends FBox {
   
   void act() {
     this.setVelocity(100 * direction,0);
-    //if(this.getX() == this.pgetX()) {
-      
+    ////println(dist(this.getX(),0, t.get(3),0));
+    //println(this.getX() - t.get(3)*gridsize);
+    //println(direction);
+    ////println("hi");
+    //for(int i = 0; i < t.size(); i++) {
+    //  //if(this.getX() == t.get(i)) {
+    //  //  direction *= -1;
+    //  //}
+    //  if(dist(this.getX(),0, t.get(i)*gridsize,0) < 0) {
+    //    direction *= -1;
+        
+    //  }
     //}
   }
 }

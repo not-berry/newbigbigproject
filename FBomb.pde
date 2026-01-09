@@ -1,4 +1,4 @@
-class FBomb extends FBox {
+ class FBomb extends FBox {
   
   int timer;
   FBomb() {
